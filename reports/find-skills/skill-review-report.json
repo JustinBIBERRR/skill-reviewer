@@ -1,0 +1,115 @@
+{
+  "skill_name": "find-skills",
+  "package_path": "C:\\Users\\msi-gf66\\.agents\\skills\\find-skills",
+  "coverage": "full-package",
+  "reviewer_version": "1.0.0",
+  "gate_summary": {
+    "overall_status": "pass",
+    "results": [
+      {
+        "rule_id": "GATE-META-001",
+        "status": "pass",
+        "severity": "blocker",
+        "summary": "Skill root must contain SKILL.md"
+      },
+      {
+        "rule_id": "GATE-META-002",
+        "status": "pass",
+        "severity": "blocker",
+        "summary": "SKILL.md must contain valid frontmatter"
+      },
+      {
+        "rule_id": "GATE-META-003",
+        "status": "pass",
+        "severity": "blocker",
+        "summary": "name must match naming rules"
+      },
+      {
+        "rule_id": "GATE-META-004",
+        "status": "pass",
+        "severity": "blocker",
+        "summary": "description must exist"
+      },
+      {
+        "rule_id": "GATE-META-005",
+        "status": "pass",
+        "severity": "blocker",
+        "summary": "description must include function and trigger"
+      },
+      {
+        "rule_id": "GATE-REF-001",
+        "status": "pass",
+        "severity": "major",
+        "summary": "Referenced relative files must exist"
+      },
+      {
+        "rule_id": "GATE-STRUCT-001",
+        "status": "pass",
+        "severity": "major",
+        "summary": "Core package structure is reachable."
+      },
+      {
+        "rule_id": "GATE-SEC-001",
+        "status": "not_applicable",
+        "severity": "blocker",
+        "summary": "Secret scanning is not implemented in this lightweight runner."
+      }
+    ]
+  },
+  "quality_score": {
+    "total_score": 90,
+    "grade": "recommended",
+    "dimensions": [
+      {
+        "dimension_id": "S-01",
+        "score": 20,
+        "summary": "Task focus and package intent alignment."
+      },
+      {
+        "dimension_id": "S-02",
+        "score": 20,
+        "summary": "Trigger clarity in metadata description."
+      },
+      {
+        "dimension_id": "S-03",
+        "score": 20,
+        "summary": "Instruction quality and execution readability."
+      },
+      {
+        "dimension_id": "S-04",
+        "score": 16,
+        "summary": "Resource layering and reference hygiene."
+      },
+      {
+        "dimension_id": "S-05",
+        "score": 14,
+        "summary": "Failure defense and deterministic guardrails."
+      }
+    ]
+  },
+  "findings": [],
+  "evidence_log": [
+    {
+      "source_level": "standard",
+      "source_title": "Agent Skills Specification",
+      "source_url": "https://agentskills.io/specification",
+      "source_quote": "A skill is a directory containing, at minimum, a SKILL.md file.",
+      "supports": [
+        "baseline"
+      ]
+    }
+  ],
+  "fixes": {
+    "immediate": [
+      "No blocker fixes required."
+    ],
+    "structural": [
+      "Keep gate rules and scoring rules separated under references/.",
+      "Use scripts for deterministic checks and avoid prompt-only validation."
+    ],
+    "optional": [
+      "Expand benchmark coverage under evals/.",
+      "Add deeper security scanning for GATE-SEC-001."
+    ]
+  }
+}
