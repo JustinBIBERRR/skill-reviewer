@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SkillReviewerReport",
+  "type": "object",
+  "required": [
+    "skill_name",
+    "package_path",
+    "coverage",
+    "gate_summary",
+    "quality_score"
+  ],
+  "properties": {
+    "skill_name": {
+      "type": "string"
+    },
+    "package_path": {
+      "type": "string"
+    },
+    "coverage": {
+      "type": "string",
+      "enum": ["full-package", "skill-md-only", "partial"]
+    },
+    "reviewer_version": {
+      "type": "string"
+    },
+    "gate_summary": {
+      "type": "object",
+      "required": ["overall_status", "results"],
+      "properties": {
+        "overall_status": {
+          "type": "string",
+          "enum": ["pass", "fail", "conditional"]
+        },
+        "results": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["rule_id", "status", "severity", "summary"],
+            "properties": {
+              "rule_id": { "type": "string" },
+              "status": { "type": "string", "enum": ["pass", "fail", "not_applicable"] },
+              "severity": { "type": "string", "enum": ["blocker", "major"] },
+              "summary": { "type": "string" }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "quality_score": {
+      "type": "object",
+      "required": ["total_score", "grade", "dimensions"],
+      "properties": {
+        "total_score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "grade": {
+          "type": "string"
+        },
+        "dimensions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["dimension_id", "score", "summary"],
+            "properties": {
+              "dimension_id": { "type": "string" },
+              "score": { "type": "integer", "minimum": 0, "maximum": 20 },
+              "summary": { "type": "string" }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "evidence_log": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "fixes": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": true
+}
